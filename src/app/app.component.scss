@@ -1,0 +1,43 @@
+#menu-title{
+    font-size: large;
+    margin-right: 25px;
+}
+
+.mat-toolbar{
+    height: 60px;
+}
+
+.sidevav-items{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.side-item{
+    color: white !important;
+    margin-top: 13px;
+}
+
+.mat-sidenav{
+    background-color: #3F51B5;
+    width: 150px;
+}
+
+.content{
+    margin: 20px;
+}
+
+@media (min-width: 900px){
+    #menu-icon{
+        display: none;
+    }
+    .mat-sidenav{
+        display: none;
+    }
+}
+
+@media (max-width: 900px){
+    .top-item{
+        display: none;
+    }
+}
