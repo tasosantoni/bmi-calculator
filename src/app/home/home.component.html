@@ -1,1 +1,88 @@
-<p>home works!</p>
+<div class="content-container">
+    <div class="content">
+
+        <h1>Body mass index (BMI) Calculator</h1>
+
+        <div class="image-container">
+            <img src="bmi-range.webp" alt="">
+        </div>
+
+        <mat-stepper orientation="vertical" linear=true #stepper>
+            <mat-step [stepControl]="heightFormGroup">
+                <form [formGroup]="heightFormGroup">
+                    <ng-template matStepLabel>Fill out your height</ng-template>
+                    <mat-form-field>
+                        <mat-label>Height (cm)</mat-label>
+                        <input matInput type="number" min="1" oninput="validity.valid||(value='');" formControlName="heightCtrl" autocomplete="no" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="weightFormGroup">
+                <form [formGroup]="weightFormGroup">
+                    <ng-template matStepLabel>Fill out your weight</ng-template>
+                    <mat-form-field>
+                        <mat-label>Weight (kg)</mat-label>
+                        <input matInput type="number" min="1" oninput="validity.valid||(value='');" formControlName="weightCtrl" autocomplete="no" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <form [formGroup]="ageFormGroup">
+                    <ng-template matStepLabel>Fill out your age (optional)</ng-template>
+                    <mat-form-field>
+                        <mat-label>Age</mat-label>
+                        <input matInput type="number" min="1" oninput="validity.valid||(value='');" formControlName="ageCtrl" autocomplete="no" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-raised-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Select your gender (optional)</ng-template>
+                <mat-radio-group class="gender-radio">
+                    <mat-radio-button color="primary" value="1">Male</mat-radio-button>
+                    <mat-radio-button color="primary" value="2">Female</mat-radio-button>
+                  </mat-radio-group>
+                <div>
+                    <button id="next-button" mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Calculate</ng-template>
+                <p>Your height is: {{heightFormGroup.controls.heightCtrl.value}} cm.</p>
+                <p>Your weight is: {{weightFormGroup.controls.weightCtrl.value}} kg.</p>
+                <div *ngIf = "bmi != 0">
+                    <div *ngIf = "bmi < 18.5">
+                        <p>Your BMI is: <b style="color: rgb(56, 137, 212);">{{bmi | number: '1.0-1'}} (underweight)</b></p>
+                    </div>
+                    <div *ngIf = "bmi >= 18.5 && bmi < 25">
+                        <p>Your BMI is: <b style="color: rgb(53, 175, 53);">{{bmi | number: '1.0-1'}} (normal)</b></p>
+                    </div>
+                    <div *ngIf = "bmi > 24.9 && bmi < 30">
+                        <p>Your BMI is: <b style="color: rgb(243, 180, 84);">{{bmi | number: '1.0-1'}} (overweight)</b></p>
+                    </div>
+                    <div *ngIf = "bmi >= 30">
+                        <p>Your BMI is: <b style="color: red;">{{bmi | number: '1.0-1'}} (obese)</b></p>
+                    </div>
+
+                </div>
+                <div>
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button color="primary" (click)="setBMI()">Calculate</button>
+                  <button mat-raised-button color="warn" (click)="stepper.reset()" (click)="resetBMI()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+        
+    </div>
+</div>
