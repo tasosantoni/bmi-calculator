@@ -5,8 +5,10 @@
 
 .mat-toolbar{
     height: 60px;
+    position: fixed;
     display: flex;
     justify-content: center;
+    z-index: 2;
 }
 
 
@@ -27,7 +29,7 @@
 }
 
 .main-content{
-    margin: 20px;
+    margin: 60px 20px 20px;
 }
 
 @media (min-width: 900px){
