@@ -10,7 +10,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [fixedInViewport]="true" [fixedTopGap]="60" mode="over">
+  <mat-sidenav #sidenav [fixedInViewport]="true" [fixedTopGap]="60" mode="over" autoFocus="false">
     <div class="sidenav-items">
       <a (click)="sidenav.close()" mat-button routerLink="/" class="side-item"><mat-icon>home</mat-icon>Home</a>
       <a (click)="sidenav.close()" mat-button routerLink="/introduction" class="side-item"><mat-icon>bookmark</mat-icon>Introduction</a>
@@ -20,6 +20,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="main-content">
+      <br>
+      <br>
+      <br>
+      <br>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
